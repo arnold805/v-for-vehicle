@@ -1,0 +1,2 @@
+class FavoriteVehiclesController < ApiController
+end
