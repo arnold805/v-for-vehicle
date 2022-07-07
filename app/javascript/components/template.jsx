@@ -106,7 +106,7 @@ function PricingContent() {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Company name
+            V for Vehicle!
           </Typography>
           <nav>
             <Link
