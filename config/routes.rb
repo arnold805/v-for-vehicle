@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '*path' => redirect('/')
   resources :users, only: [:create]
 
   # Initially Authenticate User

@@ -6,24 +6,30 @@ import SavedSearch from "./NewSearch";
 import FavoritedVehicles from "./FavoritedVehicles";
 import ResearchVehicle from "./ResearchVehicle";
 import SellVehicle from "./SellVehicle";
-import Authentication from "./Authentication";
-import { Route, Routes } from "react-router-dom";
+// import Authentication from "./Authentication";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Navbar />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<NewSearch />}>
+            <Route index element={<NewSearch />} />
+            <Route path="searches">
+              <Route path="saved" element={<SavedSearch />} />
+            </Route>
+            <Route path="vehicles">
+              <Route path="favorites" element={<FavoritedVehicles />} />
+              <Route path="research" element={<ResearchVehicle />} />
+              <Route path="sell" element={<SellVehicle />} />
+            </Route>
+          </Route>
+        </Routes>
+        {/* <Authentication /> */}
+      </BrowserRouter>
 
-      <Routes>
-        <Route path="/" element={<NewSearch />}>
-          <Route path="/searches/saved" element={<SavedSearch />} />
-          <Route path="/vehicles/favorites" element={<FavoritedVehicles />} />
-          <Route path="/vehicles/research" element={<ResearchVehicle />} />
-          <Route path="/vehicles/sell" element={<SellVehicle />} />
-        </Route>
-      </Routes>
-
-      {/* <Authentication /> */}
       <hr />
       <span
         style={{

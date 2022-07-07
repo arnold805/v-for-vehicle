@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -22,40 +23,45 @@ const Navbar = () => {
             <Link
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
+              to="/"
+              component={RouterLink}
             >
               New Search
             </Link>
             <Link
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
+              to="/searches/saved"
+              component={RouterLink}
             >
               Saved Searches
             </Link>
             <Link
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
+              to="/vehicles/favorites"
+              component={RouterLink}
             >
               Favorited Vehicles
             </Link>
             <Link
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
+              to="/vehicles/research"
+              component={RouterLink}
             >
               Research Vehicle
             </Link>
             <Link
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
+              to="/vehicles/sell"
+              component={RouterLink}
             >
               Sell Vehicle
             </Link>
