@@ -7,17 +7,23 @@ import FavoritedVehicles from "./FavoritedVehicles";
 import ResearchVehicle from "./ResearchVehicle";
 import SellVehicle from "./SellVehicle";
 import Authentication from "./Authentication";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <NewSearch />
-      <SavedSearch />
-      <FavoritedVehicles />
-      <ResearchVehicle />
-      <SellVehicle />
-      <Authentication />
+
+      <Routes>
+        <Route path="/" element={<NewSearch />}>
+          <Route path="/searches/saved" element={<SavedSearch />} />
+          <Route path="/vehicles/favorites" element={<FavoritedVehicles />} />
+          <Route path="/vehicles/research" element={<ResearchVehicle />} />
+          <Route path="/vehicles/sell" element={<SellVehicle />} />
+        </Route>
+      </Routes>
+
+      {/* <Authentication /> */}
       <hr />
       <span
         style={{
