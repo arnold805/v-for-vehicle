@@ -1,11 +1,10 @@
 import React from "react";
+import Template from "./template";
 
 const App = () => {
 
   return (
-    <div className="main">
-        React Working!!!
-    </div>
+      <Template/>
   );
 };
 
