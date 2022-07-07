@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '*path' => redirect('/')
+  match '*path', constraints: { format: 'html' }, to: "root#index", via: [:get]
   resources :users, only: [:create]
 
   # Initially Authenticate User
