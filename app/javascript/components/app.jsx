@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import NewSearch from "./NewSearch";
 import SavedSearches from "./SavedSearches";
@@ -12,6 +12,18 @@ import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [recipes, setRecipes] = useState([]);
+  
+  useEffect(() => {
+    fetch("/authorized_user").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setCurrentUser(user);
+        });
+      }
+    });
+  }, []);
   return (
     <>
       <BrowserRouter>
@@ -27,6 +39,8 @@ const App = () => {
               <Route path="sell" element={<SellVehicle />} />
             </Route>
             <Route path="login" element={<Authentication />} />
+            <Route path="signup" element={<SignUp setCurrentUser={setCurrentUser} />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

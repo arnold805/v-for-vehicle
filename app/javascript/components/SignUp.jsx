@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,7 +10,7 @@ import CarRentalIcon from "@mui/icons-material/CarRental";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -32,15 +32,40 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+export default function SignUp({ setCurrentUser }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [errors, setErrors] = useState([]);
+
+  function onSignUpSubmit(e) {
+    // debugger;
+    e.preventDefault();
+    const user = {
+      "first_name": firstName,
+      "last_name": lastName,
+      "email": email,
+      "password": password,
+    };
+    fetch(`/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setCurrentUser(user);
+        });
+      } else {
+        res.json().then((json) => setErrors(json.errors));
+      }
     });
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -59,17 +84,18 @@ export default function SignUp() {
             <CarRentalIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign Up
           </Typography>
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={onSignUpSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  onChange={(e) => setFirstName(e.target.value)}
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -81,6 +107,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                   fullWidth
                   id="lastName"
@@ -91,6 +118,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   fullWidth
                   id="email"
@@ -101,6 +129,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   fullWidth
                   name="password"
@@ -121,18 +150,13 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link
-                  variant="body2"
-                  to="/login"
-                  component={RouterLink}
-                >
+                <Link variant="body2" to="/login" component={RouterLink}>
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
