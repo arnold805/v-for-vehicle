@@ -1,12 +1,14 @@
 import React from "react";
-import Layout from "./Layout"
+import Layout from "./Layout";
 import NewSearch from "./NewSearch";
 import SavedSearches from "./SavedSearches";
 import FavoritedVehicles from "./FavoritedVehicles";
 import ResearchVehicle from "./ResearchVehicle";
 import SellVehicle from "./SellVehicle";
 import NotFound from "./NotFound";
-// import Authentication from "./Authentication";
+import Authentication from "./Authentication";
+import SignUp from "./SignUp";
+import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
               <Route path="research" element={<ResearchVehicle />} />
               <Route path="sell" element={<SellVehicle />} />
             </Route>
+            <Route path="login" element={<Authentication />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

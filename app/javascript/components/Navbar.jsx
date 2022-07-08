@@ -1,10 +1,10 @@
 import React from "react";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Button from '@mui/material/Button';
-import { Link as RouterLink } from 'react-router-dom';
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
+import { Link as RouterLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -66,7 +66,12 @@ const Navbar = () => {
               Sell Vehicle
             </Link>
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+          <Button
+            variant="outlined"
+            to="/login"
+            component={RouterLink}
+            sx={{ my: 1, mx: 1.5 }}
+          >
             Login
           </Button>
         </Toolbar>
