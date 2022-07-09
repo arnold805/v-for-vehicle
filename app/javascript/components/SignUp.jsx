@@ -58,11 +58,9 @@ export default function SignUp({ setCurrentUser }) {
       body: JSON.stringify(user),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          setCurrentUser(user);
-        });
+        setCurrentUser(res.json());
       } else {
-        res.json().then((json) => setErrors(json.errors));
+        setErrors(res.json().errors);
       }
     });
   }

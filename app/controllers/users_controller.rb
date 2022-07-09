@@ -16,13 +16,13 @@ class UsersController < ApiController
     
     # POST "/users"
     def create
-        @user = User.new(username: user_params[:username])
+        @user = User.new(email: user_params[:email])
         @user.password = user_params[:password]
         @user.save!
         session[:current_user] = @user.id
         session[:login_attempts] = 0
         render json: @user, status: :created
-      end
+    end
 
     # PUT "/users/:id"
     def update
@@ -41,6 +41,6 @@ class UsersController < ApiController
     private
     
     def user_params
-        params.permit(:username, :password)
+        params.permit(:first_name, :last_name, :email, :password)
     end
 end
