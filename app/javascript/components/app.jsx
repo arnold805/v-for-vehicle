@@ -18,9 +18,7 @@ const App = () => {
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          setCurrentUser(user);
-        });
+        setCurrentUser(res.json());
       }
     });
   }, []);
@@ -28,7 +26,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout currentUser={currentUser}/>}>
             <Route index element={<NewSearch />} />
             <Route path="searches">
               <Route path="saved" element={<SavedSearches />} />

@@ -6,7 +6,7 @@ import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { Link as RouterLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (currentUser) => {
   return (
     <>
       <AppBar
@@ -19,61 +19,64 @@ const Navbar = () => {
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             V for Vehicle!
           </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              sx={{ my: 1, mx: 1.5 }}
-              to="/"
+          {currentUser ? (
+            <nav>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/"
+                component={RouterLink}
+              >
+                New Search
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/searches/saved"
+                component={RouterLink}
+              >
+                Saved Searches
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/vehicles/favorites"
+                component={RouterLink}
+              >
+                Favorited Vehicles
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/vehicles/research"
+                component={RouterLink}
+              >
+                Research Vehicle
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/vehicles/sell"
+                component={RouterLink}
+              >
+                Sell Vehicle
+              </Link>
+            </nav>
+          ) : (
+            <Button
+              variant="outlined"
+              to="/login"
               component={RouterLink}
-            >
-              New Search
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
               sx={{ my: 1, mx: 1.5 }}
-              to="/searches/saved"
-              component={RouterLink}
             >
-              Saved Searches
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              sx={{ my: 1, mx: 1.5 }}
-              to="/vehicles/favorites"
-              component={RouterLink}
-            >
-              Favorited Vehicles
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              sx={{ my: 1, mx: 1.5 }}
-              to="/vehicles/research"
-              component={RouterLink}
-            >
-              Research Vehicle
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              sx={{ my: 1, mx: 1.5 }}
-              to="/vehicles/sell"
-              component={RouterLink}
-            >
-              Sell Vehicle
-            </Link>
-          </nav>
-          <Button
-            variant="outlined"
-            to="/login"
-            component={RouterLink}
-            sx={{ my: 1, mx: 1.5 }}
-          >
-            Login
-          </Button>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </>

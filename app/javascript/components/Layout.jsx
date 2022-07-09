@@ -3,10 +3,10 @@ import Navbar from "./Navbar";
 import Template from "./template";
 import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+const Layout = (currentUser) => {
   return (
     <div>
-      <Navbar />
+      <Navbar currentUser={currentUser}/>
       <main>
         <Outlet />
       </main>
