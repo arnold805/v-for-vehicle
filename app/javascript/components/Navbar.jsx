@@ -66,6 +66,14 @@ const Navbar = (currentUser) => {
               >
                 Sell Vehicle
               </Link>
+              <Button
+              variant="outlined"
+              to="/signin"
+              component={RouterLink}
+              sx={{ my: 1, mx: 1.5 }}
+            >
+              Logout
+            </Button>
             </nav>
           ) : (
             <Button

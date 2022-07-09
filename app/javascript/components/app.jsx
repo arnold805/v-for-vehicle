@@ -6,7 +6,7 @@ import FavoritedVehicles from "./FavoritedVehicles";
 import ResearchVehicle from "./ResearchVehicle";
 import SellVehicle from "./SellVehicle";
 import NotFound from "./NotFound";
-import Authentication from "./Authentication";
+import Authentication from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

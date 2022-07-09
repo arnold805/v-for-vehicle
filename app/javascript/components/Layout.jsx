@@ -1,31 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Template from "./template";
+import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 
-const Layout = (currentUser) => {
+const Layout = (setCurrentUser) => {
   return (
     <div>
-      <Navbar currentUser={currentUser}/>
+      <Navbar setCurrentUser={setCurrentUser}/>
       <main>
         <Outlet />
       </main>
-
-      {/* Adds template for our benefit. Remove later */}
-
-      <hr />
-      <span
-        style={{
-          color: "red",
-          width: "100%",
-          textAlign: "center",
-          display: "block",
-        }}
-      >
-        Everything below is template only
-      </span>
-      <hr />
-      <Template />
+        <Footer/>
     </div>
   );
 };
