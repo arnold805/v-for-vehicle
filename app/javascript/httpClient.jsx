@@ -12,6 +12,7 @@ export function HttpClient(path, method, obj, responseOkayCallback, responseNotO
       })
       .then((res) => {
         res.json().then((json) => {
+            console.log(json)
           if (res.ok) {
             responseOkayCallback(json);
           } else {

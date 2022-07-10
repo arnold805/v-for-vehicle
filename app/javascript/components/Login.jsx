@@ -23,7 +23,7 @@ function Login({ setCurrentUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    //                              on success    ,  on fail
+    //                                                on success    ,  on fail
     HttpClient("/login", "POST", { email, password }, setCurrentUser, (errJson) => {setError(errJson.error)});
   }
 

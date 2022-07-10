@@ -16,8 +16,7 @@ class UsersController < ApiController
     
     # POST "/users"
     def create
-        @user = User.new(email: user_params[:email])
-        @user.password = user_params[:password]
+        @user = User.new(user_params)
         @user.save!
         session[:current_user] = @user.id
         session[:login_attempts] = 0
