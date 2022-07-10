@@ -10,22 +10,18 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CsrfToken from "../csrfToken";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [recipes, setRecipes] = useState([]);
-  const [csrf, setCsrf] = useState("");
 
   useEffect(() => {
-    setCsrf(
-      document.querySelector("meta[name='csrf-token']").getAttribute("content")
-    );
 
     fetch("/authorized_user", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "X-CSRF-Token": csrf,
+        "X-CSRF-Token": CsrfToken(),
       },
     }).then((res) => {
       if (res.ok) {
@@ -47,7 +43,7 @@ const App = () => {
               <Route path="research" element={<ResearchVehicle />} />
               <Route path="sell" element={<SellVehicle />} />
             </Route>
-            <Route path="login" element={<Login csrf={csrf} setCurrentUser={setCurrentUser} />} />
+            <Route path="login" element={<Login setCurrentUser={setCurrentUser} />} />
             <Route
               path="signup"
               element={<SignUp setCurrentUser={setCurrentUser} />}

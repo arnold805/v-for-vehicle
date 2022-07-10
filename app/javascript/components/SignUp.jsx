@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
+import CsrfToken from "../csrfToken";
 
 
 function Copyright(props) {
@@ -54,7 +55,8 @@ export default function SignUp({ setCurrentUser }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
+        "X-CSRF-Token": CsrfToken(),
       },
       body: JSON.stringify(user),
     }).then((res) => {

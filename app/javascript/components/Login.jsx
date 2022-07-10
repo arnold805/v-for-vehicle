@@ -12,41 +12,19 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
+import { HttpClient } from "../httpClient";
 
 import { Link as RouterLink } from "react-router-dom";
 
-function Login({ csrf, setCurrentUser }) {
+function Login({ setCurrentUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [error, setError] = useState("");
+  const [error, setError] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-CSRF-Token": csrf,
-      },
-      body: JSON.stringify({ email, password }),
-    })
-    .then((res) => {
-      res.json().then((json) => {
-        if (res.ok) {
-          setCurrentUser(json);
-        } else {
-          setError(json.error);
-        }
-      })
-      .catch((err) => {
-        console.log("There was a problem parsing the response body" + err)
-        console.log("body: " + res.body)
-      });
-    })
-    .catch((err) => {
-      console.log("There was a problem connecting to the server" + err)
-    });
+    //                              on success    ,  on fail
+    HttpClient("/login", "POST", { email, password }, setCurrentUser, (errJson) => {setError(errJson.error)});
   }
 
   return (
