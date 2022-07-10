@@ -48,12 +48,6 @@ export const HttpClient = () => {
       .catch(catchError);
   }
 
-  function executDeleteRequest(path, options, okCallback, notOkCallback) {
-    fetch(path, options)
-      .then((res) => handleResponse(res, okCallback, notOkCallback))
-      .catch(catchError);
-  }
-
   return {
     get: function (path, okCallback, notOkCallback) {
       let options = {
@@ -75,7 +69,9 @@ export const HttpClient = () => {
         method: "DELETE",
         headers,
       };
-      executDeleteRequest(path, options, okCallback, notOkCallback)
+      fetch(path, options)
+        .then((res) => handleResponse(res, okCallback, notOkCallback))
+        .catch(catchError);
     },
   };
 };
