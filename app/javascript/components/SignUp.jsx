@@ -10,8 +10,9 @@ import CarRentalIcon from "@mui/icons-material/CarRental";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Link as RouterLink } from "react-router-dom";
-import {HttpClient} from "../httpClient";
+import { HttpClient } from "../httpClient";
 import Alert from "@mui/material/Alert";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp({ setCurrentUser }) {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +21,7 @@ export default function SignUp({ setCurrentUser }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState();
   const httpClient = HttpClient();
+  let navigate = useNavigate();
 
   function onSignUpSubmit(e) {
     // debugger;
@@ -31,8 +33,14 @@ export default function SignUp({ setCurrentUser }) {
       email: email,
       password: password,
     };
-    httpClient.post("/users", user, setCurrentUser, (err) =>
-      setErrors(err.errors)
+    httpClient.post(
+      "/users",
+      user,
+      (user) => {
+        setCurrentUser(user);
+        navigate(`/`);
+      },
+      (err) => setErrors(err.errors)
     );
   }
 

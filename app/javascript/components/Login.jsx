@@ -12,19 +12,31 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
-import {HttpClient} from "../httpClient";
+import { HttpClient } from "../httpClient";
 import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login({ setCurrentUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
   const httpClient = HttpClient();
+  let navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    //                                                on success    ,  on fail
-    httpClient.post("/login", { email, password }, setCurrentUser, (errJson) => {setError(errJson.error)});
+
+    httpClient.post(
+      "/login",
+      { email, password },
+      (user) => {
+        setCurrentUser(user);
+        navigate(`/`);
+      },
+      (errJson) => {
+        setError(errJson.error);
+      }
+    );
   }
 
   return (

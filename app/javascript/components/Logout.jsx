@@ -1,12 +1,23 @@
 import React from "react";
 import { HttpClient } from "../httpClient";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const Logout = ({currentUser, setCurrentUser}) => {
+const Logout = ({ currentUser, setCurrentUser }) => {
+  let navigate = useNavigate();
   const httpClient = HttpClient();
 
   const handleClick = () => {
-    httpClient.delete("/logout", () => {setCurrentUser(null)}, () => {throw "There was a problem with logging out"});
+    httpClient.delete(
+      "/logout",
+      () => {
+        setCurrentUser(null);
+        navigate(`/login`);
+      },
+      () => {
+        throw "There was a problem with logging out";
+      }
+    );
   };
 
   return (
