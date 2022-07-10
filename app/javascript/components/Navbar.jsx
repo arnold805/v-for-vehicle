@@ -5,8 +5,15 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { Link as RouterLink } from "react-router-dom";
+import { HttpClient } from "../httpClient";
 
 const Navbar = (currentUser) => {
+  const httpClient = HttpClient();
+
+  const logout = () => {
+    httpClient.delete("/logout")
+  }
+
   return (
     <>
       <AppBar
@@ -68,8 +75,7 @@ const Navbar = (currentUser) => {
               </Link>
               <Button
               variant="outlined"
-              to="/signin"
-              component={RouterLink}
+              onClick={logout}
               sx={{ my: 1, mx: 1.5 }}
             >
               Logout

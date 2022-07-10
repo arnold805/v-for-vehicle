@@ -10,24 +10,14 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CsrfToken from "../csrfToken";
+import {HttpClient} from "../httpClient";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const httpClient = HttpClient();
 
   useEffect(() => {
-
-    fetch("/authorized_user", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-CSRF-Token": CsrfToken(),
-      },
-    }).then((res) => {
-      if (res.ok) {
-        setCurrentUser(res.json());
-      }
-    });
+    httpClient.get("/authorized_user", setCurrentUser);
   }, []);
   return (
     <>
