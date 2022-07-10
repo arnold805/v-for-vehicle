@@ -11,12 +11,14 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
+
 import { Link as RouterLink } from "react-router-dom";
 
 function Login({ csrf, setCurrentUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,13 +29,23 @@ function Login({ csrf, setCurrentUser }) {
         Accept: "application/json",
         "X-CSRF-Token": csrf,
       },
-      body: JSON.stringify({email, password}),
-    }).then((res) => {
-      if (res.ok) {
-        setCurrentUser(res.json());
-      } else {
-        setErrors(res.json().errors);
-      }
+      body: JSON.stringify({ email, password }),
+    })
+    .then((res) => {
+      res.json().then((json) => {
+        if (res.ok) {
+          setCurrentUser(json);
+        } else {
+          setError(json.error);
+        }
+      })
+      .catch((err) => {
+        console.log("There was a problem parsing the response body" + err)
+        console.log("body: " + res.body)
+      });
+    })
+    .catch((err) => {
+      console.log("There was a problem connecting to the server" + err)
     });
   }
 
@@ -80,6 +92,7 @@ function Login({ csrf, setCurrentUser }) {
             onSubmit={handleSubmit}
             sx={{ mt: 1 }}
           >
+            {error ? <Alert severity="warning">{error}</Alert> : <></>}
             <TextField
               margin="normal"
               required

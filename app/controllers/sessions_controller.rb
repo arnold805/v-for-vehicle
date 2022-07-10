@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
             # session[:login_attempts] = session[:login_attempts] + 1
             session[:login_attempts] += 1
 
-            render json: { error: "Invalid Password and/or Username" },  status: :unauthorized
+            render json: { error: "Invalid Email and/or Password" },  status: :unauthorized
         end
     end 
 
