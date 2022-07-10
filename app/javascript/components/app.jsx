@@ -23,7 +23,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout currentUser={currentUser} />}>
+          <Route path="/" element={<Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />}>
             <Route index element={<NewSearch />} />
             <Route path="searches">
               <Route path="saved" element={<SavedSearches />} />

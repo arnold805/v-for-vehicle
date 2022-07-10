@@ -5,14 +5,9 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { Link as RouterLink } from "react-router-dom";
-import { HttpClient } from "../httpClient";
+import Logout from "./Logout";
 
-const Navbar = (currentUser) => {
-  const httpClient = HttpClient();
-
-  const logout = () => {
-    httpClient.delete("/logout")
-  }
+const Navbar = ({currentUser, setCurrentUser}) => {
 
   return (
     <>
@@ -73,13 +68,7 @@ const Navbar = (currentUser) => {
               >
                 Sell Vehicle
               </Link>
-              <Button
-              variant="outlined"
-              onClick={logout}
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Logout
-            </Button>
+              <Logout currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             </nav>
           ) : (
             <Button

@@ -58,7 +58,7 @@ export const HttpClient = () => {
     },
     post: function (path, obj, okCallback, notOkCallback) {
       let options = {
-        method: "GET",
+        method: "POST",
         headers,
         body: JSON.stringify(obj),
       };
