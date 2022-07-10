@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     before_action :authorize_user, except: [:login]
 
     def login
-        user = User.find_by(username: params[:username])
+        user = User.find_by(email: params[:email])
         # byebug
         if user&.authenticate(params[:password])
 

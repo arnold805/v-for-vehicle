@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  match '*path', constraints: { format: 'html' }, to: "root#index", via: [:get]
   resources :users, only: [:create]
 
   # Initially Authenticate User
@@ -10,4 +9,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#logout'
 
   root 'root#index'
+  match '*path', constraints: { format: 'html' }, to: "root#index", via: [:get]
 end

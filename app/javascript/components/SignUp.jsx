@@ -54,7 +54,7 @@ export default function SignUp({ setCurrentUser }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        Accept: "application/json"
       },
       body: JSON.stringify(user),
     }).then((res) => {
