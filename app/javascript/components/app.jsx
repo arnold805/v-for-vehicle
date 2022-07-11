@@ -8,6 +8,7 @@ import SellVehicle from "./SellVehicle";
 import NotFound from "./NotFound";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import Home from "./Home";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {HttpClient} from "../httpClient";
@@ -24,8 +25,9 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />}>
-            <Route index element={<NewSearch />} />
+            <Route index element={<Home />} />
             <Route path="searches">
+              <Route path="new" element={<NewSearch />} />
               <Route path="saved" element={<SavedSearches />} />
             </Route>
             <Route path="vehicles">

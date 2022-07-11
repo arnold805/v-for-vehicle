@@ -30,6 +30,15 @@ const Navbar = ({currentUser, setCurrentUser}) => {
                 to="/"
                 component={RouterLink}
               >
+                Home
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                sx={{ my: 1, mx: 1.5 }}
+                to="/searches/new"
+                component={RouterLink}
+              >
                 New Search
               </Link>
               <Link
