@@ -8,15 +8,22 @@ const ResearchVehicle = () => {
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
-    field: 'firstName',
-    headerName: 'First name',
+    field: 'year',
+    headerName: 'Year',
+    type: 'number',
     width: 150,
     editable: true,
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
+    field: 'make',
+    headerName: 'Make',
     width: 150,
+    editable: true,
+  },
+  {
+    field: 'model',
+    headerName: 'Model',
+    width: 110,
     editable: true,
   },
   {
@@ -26,15 +33,19 @@ const columns = [
     width: 110,
     editable: true,
   },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
+
+
+  // no sure this is needed
+
+  // {
+  //   field: 'fullName',
+  //   headerName: 'Full name',
+  //   description: 'This column has a value getter and is not sortable.',
+  //   sortable: false,
+  //   width: 160,
+  //   valueGetter: (params) =>
+  //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  // },
 ];
 
 const rows = [
@@ -50,12 +61,12 @@ const rows = [
 ];
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: "100vh", width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={15}
+        rowsPerPageOptions={[15]}
         checkboxSelection
       />
     </div>

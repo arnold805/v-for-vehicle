@@ -27,7 +27,7 @@ function Login({ setCurrentUser }) {
     e.preventDefault();
 
     httpClient.post(
-      "/login",
+      "/api/login",
       { email, password },
       (user) => {
         setCurrentUser(user);

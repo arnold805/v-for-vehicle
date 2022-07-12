@@ -1,4 +1,4 @@
-class UsersController < ApiController
+class Api::UsersController < ApiController
 
     before_action :is_authorized?, except: [:create]
     before_action :is_admin?, only: [:update, :destroy]

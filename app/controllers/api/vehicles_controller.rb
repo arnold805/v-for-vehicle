@@ -1,7 +1,7 @@
-class VehiclesController < ApiController
+class Api::VehiclesController < ApiController
 
     def index
-        render json Vehicle.all
+        render json: Vehicle.all
     end
 
     def show

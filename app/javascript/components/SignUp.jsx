@@ -34,7 +34,7 @@ export default function SignUp({ setCurrentUser }) {
       password: password,
     };
     httpClient.post(
-      "/users",
+      "/api/users",
       user,
       (user) => {
         setCurrentUser(user);

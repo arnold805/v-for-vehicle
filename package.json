@@ -1,8 +1,10 @@
 {
   "name": "v-for-vehicle",
   "private": "true",
+  
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
+    "start": "node esbuild-dev.config.js"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",

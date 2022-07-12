@@ -1,4 +1,4 @@
-class SessionsController < ApiController
+class Api::SessionsController < ApiController
 
     before_action :authorize_user, except: [:login]
 

@@ -9,7 +9,7 @@ const Logout = ({ currentUser, setCurrentUser }) => {
 
   const handleClick = () => {
     httpClient.delete(
-      "/logout",
+      "/api/logout",
       () => {
         setCurrentUser(null);
         navigate(`/login`);

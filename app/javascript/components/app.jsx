@@ -11,20 +11,40 @@ import SignUp from "./SignUp";
 import Home from "./Home";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {HttpClient} from "../httpClient";
+import { HttpClient } from "../httpClient";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [vehicles, setVehicles] = useState([]);
   const httpClient = HttpClient();
 
   useEffect(() => {
-    httpClient.get("/authorized_user", setCurrentUser);
+    httpClient.get("/api/authorized_user", setCurrentUser);
   }, []);
+
+  useEffect(() => {
+    httpClient.get("/api/vehicles", setVehicles);
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("/api/vehicles")
+  //     .then((res) => res.json())
+  //     .then(setVehicles);
+  // }, []);
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />}>
+          <Route
+            path="/"
+            element={
+              <Layout
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          >
             <Route index element={<Home />} />
             <Route path="searches">
               <Route path="new" element={<NewSearch />} />
@@ -35,7 +55,10 @@ const App = () => {
               <Route path="research" element={<ResearchVehicle />} />
               <Route path="sell" element={<SellVehicle />} />
             </Route>
-            <Route path="login" element={<Login setCurrentUser={setCurrentUser} />} />
+            <Route
+              path="login"
+              element={<Login setCurrentUser={setCurrentUser} />}
+            />
             <Route
               path="signup"
               element={<SignUp setCurrentUser={setCurrentUser} />}

@@ -7,10 +7,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { CardActionArea } from '@mui/material';
 
-const NewSearch = () => {
+const NewSearch = ({vehicle}) => {
+
   return (
     <>
-      <h1>Vehicle Card component</h1>
+      <h1>Vehicle Card components</h1>
       <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
