@@ -33,6 +33,6 @@ class Api::VehiclesController < ApiController
     end
 
     def vehicle_params
-        params.permit(:year, :make, :model, :condition, :price, :odometer, :engine_type, :engine_displacement, :cylinder_count, :power, :torque, :transmission, :body_style, :drive_type, :interior_color, :exterior_color, :zipcode)
+        params.permit(:year, :make, :model, :condition, :price, :odometer, :engine_type, :engine_displacement, :cylinder_count, :power, :torque, :transmission, :body_style, :drive_type, :interior_color, :exterior_color, :img_url, :zipcode)
     end
 end

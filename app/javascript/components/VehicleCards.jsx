@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { HttpClient } from "../httpClient";
+import VehicleCard from "./VehicleCard"
 
 const VehicleCards = () => {
+
+  const [vehicles, setVehicles] = useState([]);
+  const httpClient = HttpClient();
+
+  useEffect(() => {
+    httpClient.get("/api/vehicles", setVehicles);
+  }, []);
+
   return (
-    <>
-      <h1>Vehicle Cards plural component</h1>
-    </>
+    <div>
+      {vehicles.map((vehicle) => {
+        return <VehicleCard key={vehicle.id} vehicle={vehicle} />;
+      })}
+    </div>
   );
-};
+}
 
 export default VehicleCards;

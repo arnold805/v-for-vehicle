@@ -13,24 +13,14 @@ import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HttpClient } from "../httpClient";
 
-const App = () => {
+const App = ({vehicles}) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [vehicles, setVehicles] = useState([]);
+
   const httpClient = HttpClient();
 
   useEffect(() => {
     httpClient.get("/api/authorized_user", setCurrentUser);
   }, []);
-
-  useEffect(() => {
-    httpClient.get("/api/vehicles", setVehicles);
-  }, []);
-
-  // useEffect(() => {
-  //   fetch("/api/vehicles")
-  //     .then((res) => res.json())
-  //     .then(setVehicles);
-  // }, []);
 
   return (
     <>
@@ -45,7 +35,7 @@ const App = () => {
               />
             }
           >
-            <Route index element={<Home />} />
+            <Route index element={<Home vehicles={vehicles}/>} />
             <Route path="searches">
               <Route path="new" element={<NewSearch />} />
               <Route path="saved" element={<SavedSearches />} />

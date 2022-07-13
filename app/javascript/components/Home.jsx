@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import VehicleCard from "./VehicleCard";
+import VehicleCards from "./VehicleCards";
 
-const Home = () => {
+const Home = (vehicles) => {
 
   return (
     <>
-      <h1>Home component</h1>
-      <VehicleCard/>
+      <VehicleCards vehicles={vehicles}/>
     </>
   );
 };
