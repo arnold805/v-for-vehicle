@@ -10,13 +10,33 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 function VehicleCard({ vehicle }) {
+  const defaultImg = {
+    img_url: "https://m.media-amazon.com/images/I/81tzqIckFYL._AC_SL1500_.jpg",
+  };
   const [expanded, setExpanded] = React.useState(false);
+  const [imageIndex, setImageIndex] = React.useState(0);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const mod = (a, n) => {
+    return a - (n * Math.floor(a/n));
+  }
+
+  const handleRightClick = () => {
+    setImageIndex(mod(imageIndex + 1, images.length));
+  };
+
+  const handleLeftClick = () => {
+    setImageIndex(mod(imageIndex - 1, images.length));
+  };
+
+
 
   const {
     year,
@@ -35,7 +55,7 @@ function VehicleCard({ vehicle }) {
     drive_type,
     interior_color,
     exterior_color,
-    img_url,
+    images,
   } = vehicle;
 
   const ExpandMore = styled((props) => {
@@ -57,9 +77,11 @@ function VehicleCard({ vehicle }) {
           component="img"
           alt="vehicle image"
           height="140"
-          image={img_url}
+          image={(images[imageIndex] || defaultImg).img_url}
         />
         <CardContent>
+          <ArrowBackIosNewIcon onClick={handleLeftClick}/>
+          <ArrowForwardIosIcon onClick={handleRightClick}/>
           <Typography variant="body2" color="text.secondary">
             {year}
           </Typography>
@@ -74,10 +96,10 @@ function VehicleCard({ vehicle }) {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {body_style} / {transmission}
-            <p>
+            <span>
               {engine_displacement} {cylinder_count} cyl {engine_type}{" "}
               {drive_type}
-            </p>
+            </span>
           </Typography>
         </CardContent>
         <CardActions>
@@ -93,16 +115,11 @@ function VehicleCard({ vehicle }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph></Typography>
             <Typography paragraph>
-              <p>
-                {power} HP {torque} ft-lb
-              </p>
-              <p>{exterior_color} Uaint</p>
-              <p>{interior_color} Upholstery</p>
+              {power} HP {torque} ft-lb
             </Typography>
-            <Typography paragraph></Typography>
-            <Typography paragraph></Typography>
+            <Typography paragraph>{exterior_color} Uaint</Typography>
+            <Typography paragraph>{interior_color} Upholstery</Typography>
             <Typography></Typography>
           </CardContent>
         </Collapse>
