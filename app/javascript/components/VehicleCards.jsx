@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { HttpClient } from "../httpClient";
 import VehicleCard from "./VehicleCard";
+import TextField from "@mui/material/TextField";
 
-const VehicleCards = ({showFavorites}) => {
+const VehicleCards = ({ showFavorites }) => {
   const [vehicles, setVehicles] = useState([]);
   const [favorite, setFavorite] = React.useState(false);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const httpClient = HttpClient();
 
   useEffect(() => {
-    url = '/api/vehicles'
-    if(showFavorites) {
-      url = url + '?favorites=true'
+    url = "/api/vehicles";
+    if (showFavorites) {
+      url = url + "?favorites=true";
     }
     httpClient.get(url, setVehicles);
   }, []);
@@ -31,15 +32,16 @@ const VehicleCards = ({showFavorites}) => {
 
   return (
     <>
-      <h1 className="searchbar">
-        <label htmlFor="search">Search Cars</label> <br/>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search a Make or Model..."
-          onChange={handleVehicleSearch}
-        />
-      </h1>
+    <br></br>
+      <TextField
+        onChange={handleVehicleSearch}
+        autoComplete="given-name"
+        name="searchVehicles"
+        required
+        id="firstName"
+        label="Search a Make or Model..."
+        autoFocus
+      />
       <div>
         {filteredVehicles.map((vehicle) => {
           return <VehicleCard key={vehicle.id} vehicle={vehicle} />;

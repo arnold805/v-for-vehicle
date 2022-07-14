@@ -80,7 +80,7 @@ function VehicleCard({ vehicle }) {
   return (
     <>
       <h1></h1>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 }} >
         <CardMedia
           component="img"
           alt="vehicle image"
@@ -100,14 +100,14 @@ function VehicleCard({ vehicle }) {
             make={make}
             model={model}
           >
-            {make} {model} ${price}
+            {make} {model} ${price.toLocaleString()}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {body_style} / {transmission}
-            <span>
-              {engine_displacement} {cylinder_count} cyl {engine_type}{" "}
+            <br>
+            </br>
+            {engine_displacement} {cylinder_count}-cyl {engine_type}{" "}
               {drive_type}
-            </span>
           </Typography>
         </CardContent>
         <CardActions>

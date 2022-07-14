@@ -9,7 +9,6 @@ const Footer = () => {
       maxWidth="md"
       component="footer"
     >
-      <Copyright />
     </Container>
   );
 };
