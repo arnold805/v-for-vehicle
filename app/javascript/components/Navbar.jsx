@@ -32,7 +32,7 @@ const Navbar = ({currentUser, setCurrentUser}) => {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 variant="button"
                 color="text.primary"
                 sx={{ my: 1, mx: 1.5 }}
@@ -49,7 +49,7 @@ const Navbar = ({currentUser, setCurrentUser}) => {
                 component={RouterLink}
               >
                 Saved Searches
-              </Link>
+              </Link> */}
               <Link
                 variant="button"
                 color="text.primary"
