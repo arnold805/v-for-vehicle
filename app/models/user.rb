@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     include BCrypt
-
+    has_many :favorite_vehicles
     has_many :vehicles, through: :favorite_vehicles
 
     validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/, presence: true, uniqueness: true

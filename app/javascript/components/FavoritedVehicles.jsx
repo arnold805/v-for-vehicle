@@ -1,9 +1,10 @@
 import React from "react";
+import VehicleCards from "./VehicleCards"
 
 const FavoritedVehciles = () => {
   return (
     <>
-      <h1>FavoritedVehciles component</h1>
+      <VehicleCards showFavorites={true}/>
     </>
   );
 };

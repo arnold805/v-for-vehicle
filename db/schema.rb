@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_171945) do
   enable_extension "plpgsql"
 
   create_table "favorite_vehicles", force: :cascade do |t|
-    t.string "user_id"
-    t.string "vehicle_id"
+    t.integer "user_id"
+    t.integer "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,8 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_171945) do
     t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "vehicle_id", null: false
-    t.index ["vehicle_id"], name: "index_images_on_vehicle_id"
+    t.integer "vehicle_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +60,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_171945) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "images", "vehicles"
 end

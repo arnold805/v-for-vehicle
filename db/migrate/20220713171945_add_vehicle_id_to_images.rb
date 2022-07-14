@@ -1,5 +1,5 @@
 class AddVehicleIdToImages < ActiveRecord::Migration[7.0]
   def change
-    add_reference :images, :vehicle, null: false, foreign_key: true
+    add_column :images, :vehicle_id, :integer
   end
 end

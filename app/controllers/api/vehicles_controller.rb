@@ -1,7 +1,13 @@
 class Api::VehiclesController < ApiController
 
     def index
-        render json: Vehicle.all
+        if params[:favorites]
+            vehicles = current_user.vehicles
+        else 
+            vehicles = Vehicle.all
+        end
+        
+        render json: vehicles
     end
 
     def show

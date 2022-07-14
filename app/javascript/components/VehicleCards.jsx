@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import { HttpClient } from "../httpClient";
 import VehicleCard from "./VehicleCard";
 
-const VehicleCards = () => {
+const VehicleCards = ({showFavorites}) => {
   const [vehicles, setVehicles] = useState([]);
   const [favorite, setFavorite] = React.useState(false);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const httpClient = HttpClient();
 
   useEffect(() => {
-    httpClient.get("/api/vehicles", setVehicles);
+    url = '/api/vehicles'
+    if(showFavorites) {
+      url = url + '?favorites=true'
+    }
+    httpClient.get(url, setVehicles);
   }, []);
 
   function handleVehicleSearch(e) {
