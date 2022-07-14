@@ -23,7 +23,14 @@ class Api::VehiclesController < ApiController
 
     def latest_vehicle
         @vehicle = Vehicle.last
-        render json: @recipe
+        render json: @vehicle
+    end
+
+    def favorite
+        vehicle = find_vehicle
+        user = current_user
+        favorite = FavoriteVehicle.create(vehicle: vehicle, user: user)
+        render json: favorite
     end
 
     private

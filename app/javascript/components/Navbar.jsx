@@ -59,7 +59,7 @@ const Navbar = ({currentUser, setCurrentUser}) => {
               >
                 Favorited Vehicles
               </Link>
-              <Link
+              {/* <Link
                 variant="button"
                 color="text.primary"
                 sx={{ my: 1, mx: 1.5 }}
@@ -67,7 +67,7 @@ const Navbar = ({currentUser, setCurrentUser}) => {
                 component={RouterLink}
               >
                 Research Vehicle
-              </Link>
+              </Link> */}
               <Link
                 variant="button"
                 color="text.primary"

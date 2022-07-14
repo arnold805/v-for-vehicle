@@ -12,10 +12,13 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import StarIcon from '@mui/icons-material/Star';
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import StarIcon from "@mui/icons-material/Star";
+import { HttpClient } from "../httpClient";
 
 function VehicleCard({ vehicle }) {
+  const httpClient = HttpClient();
+
   const defaultImg = {
     img_url: "https://m.media-amazon.com/images/I/81tzqIckFYL._AC_SL1500_.jpg",
   };
@@ -27,8 +30,8 @@ function VehicleCard({ vehicle }) {
   };
 
   const mod = (a, n) => {
-    return a - (n * Math.floor(a/n));
-  }
+    return a - n * Math.floor(a / n);
+  };
 
   const handleRightClick = () => {
     setImageIndex(mod(imageIndex + 1, images.length));
@@ -38,13 +41,12 @@ function VehicleCard({ vehicle }) {
     setImageIndex(mod(imageIndex - 1, images.length));
   };
 
-  const handleFavorite = () => {
-    setFavorite(vehicle.id)
-  }
-
-
+  const handleFavorite = (vehicle_id) => {
+    httpClient.post(`/api/vehicles/${vehicle_id}/favorite`, {});
+  };
 
   const {
+    id,
     year,
     make,
     model,
@@ -86,8 +88,8 @@ function VehicleCard({ vehicle }) {
           image={(images[imageIndex] || defaultImg).img_url}
         />
         <CardContent>
-          <ArrowBackIosNewIcon onClick={handleLeftClick}/>
-          <ArrowForwardIosIcon onClick={handleRightClick}/>
+          <ArrowBackIosNewIcon onClick={handleLeftClick} />
+          <ArrowForwardIosIcon onClick={handleRightClick} />
           <Typography variant="body2" color="text.secondary">
             {year}
           </Typography>
@@ -109,7 +111,14 @@ function VehicleCard({ vehicle }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleFavorite}>Add to favorites</Button>
+          <Button
+            size="small"
+            onClick={(e) => {
+              handleFavorite(id);
+            }}
+          >
+            Add to favorites
+          </Button>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
