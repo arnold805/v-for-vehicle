@@ -12,6 +12,8 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarIcon from '@mui/icons-material/Star';
 
 function VehicleCard({ vehicle }) {
   const defaultImg = {
@@ -35,6 +37,10 @@ function VehicleCard({ vehicle }) {
   const handleLeftClick = () => {
     setImageIndex(mod(imageIndex - 1, images.length));
   };
+
+  const handleFavorite = () => {
+    setFavorite(vehicle.id)
+  }
 
 
 
@@ -103,7 +109,7 @@ function VehicleCard({ vehicle }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Add to favorites</Button>
+          <Button size="small" onClick={handleFavorite}>Add to favorites</Button>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
@@ -118,8 +124,8 @@ function VehicleCard({ vehicle }) {
             <Typography paragraph>
               {power} HP {torque} ft-lb
             </Typography>
-            <Typography paragraph>{exterior_color} Uaint</Typography>
-            <Typography paragraph>{interior_color} Upholstery</Typography>
+            <Typography paragraph>{exterior_color} paint</Typography>
+            <Typography paragraph>{interior_color} upholstery</Typography>
             <Typography></Typography>
           </CardContent>
         </Collapse>

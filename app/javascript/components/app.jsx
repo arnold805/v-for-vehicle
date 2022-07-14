@@ -13,7 +13,7 @@ import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HttpClient } from "../httpClient";
 
-const App = ({vehicles}) => {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const httpClient = HttpClient();
@@ -35,7 +35,7 @@ const App = ({vehicles}) => {
               />
             }
           >
-            <Route index element={<Home vehicles={vehicles}/>} />
+            <Route index element={<Home />} />
             <Route path="searches">
               <Route path="new" element={<NewSearch />} />
               <Route path="saved" element={<SavedSearches />} />

@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const ResearchVehicle = () => {
 
-// const vehicle_params = (year, make, model, condition, price, odometer, engine_type, engine_displacement, cylinder_count, power, torque, transmission, body_style, drive_type, interior_color, exterior_color, zipcode)
+  
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },

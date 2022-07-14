@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import VehicleCards from "./VehicleCards";
 
-const Home = (vehicles) => {
+const Home = () => {
 
   return (
     <>
-      <VehicleCards vehicles={vehicles}/>
+      <VehicleCards />
     </>
   );
 };
