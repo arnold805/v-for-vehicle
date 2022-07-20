@@ -33,7 +33,17 @@ ActionController::Base.allow_rescue = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  DatabaseCleaner.strategy = :transaction
+  #Greg's explanation: changed this from = :transaction, to get capybara to work with seeded data properly
+  #Jason's explanation: Either :deletion or :truncation strategies are required when running cucumber steps that require javascript / asynchronous execution for the following reasons:
+  # 1) Javascript is not executed in headless browser mode
+  # 2) Javascript is executed and works in regular browser mode resulting in the following
+  #   a) Capybara runs the server in a separate process from the browser
+  #   b) No uncommitted transactions that are present on the server are simultaneously accessible by the other process that is used to drive the browser
+  #   c) Truncation and Deletion fully commit their transactions to the database allowing that data to be shared across processes
+  # 3) React Apps require javascript execution
+  # 4) Therefore in order for this app to work, the cleaning strategy must be either :deletion or :truncation
+  # Note: :deletion is usually more performant than :truncation
+  DatabaseCleaner.strategy = :deletion
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
