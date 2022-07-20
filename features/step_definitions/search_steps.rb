@@ -1,5 +1,6 @@
 When('I search for BMW\'s in the search box') do
-    raise "Implement me!"
+    debugger
+    fill_in "Search", with: "BMW"
 end
 Then('I should see a BMW 330i at the top of the search list') do
     raise "Implement me!"

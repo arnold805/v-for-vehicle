@@ -62,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'cucumber-rails', require: false
+  gem 'selenium-webdriver'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
 
