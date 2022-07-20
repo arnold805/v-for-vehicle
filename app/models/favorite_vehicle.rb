@@ -4,8 +4,9 @@ class FavoriteVehicle < ApplicationRecord
     belongs_to :user
 
     def validate_vehicle_id_user_id
-        if FavoriteVehicle.find_by(vehicle_id: user.id, user_id: vehicle.id)
-            errors.add(:base, "This vehicle is already on favorites list")
+        # debugger
+        if FavoriteVehicle.where(vehicle_id: vehicle.id, user_id: user.id).any?
+            self.errors.add(:base, "This vehicle is already on favorites list")
         end
     end
 
