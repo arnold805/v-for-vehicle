@@ -81,6 +81,7 @@ const Navbar = ({currentUser, setCurrentUser}) => {
             </nav>
           ) : (
             <Button
+              id='login'
               variant="outlined"
               to="/login"
               component={RouterLink}

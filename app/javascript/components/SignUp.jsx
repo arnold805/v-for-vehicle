@@ -134,6 +134,7 @@ export default function SignUp({ setCurrentUser }) {
             type="submit"
             fullWidth
             variant="contained"
+            id="signupformsubmit"
             sx={{ mt: 3, mb: 2 }}
           >
             Sign Up

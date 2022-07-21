@@ -4,7 +4,6 @@ class Api::SessionsController < ApiController
 
     def login
         user = User.find_by(email: params[:email])
-        # byebug
         if user&.authenticate(params[:password])
 
             # Group Activity => 

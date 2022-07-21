@@ -112,6 +112,7 @@ function Login({ setCurrentUser }) {
             <Button
               type="submit"
               fullWidth
+              id="signinsubmit"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
@@ -128,7 +129,7 @@ function Login({ setCurrentUser }) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link variant="body2" to="/signup" component={RouterLink}>
+                <Link variant="body2" to="/signup" id="signup" component={RouterLink}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
