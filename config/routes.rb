@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   end
 
   root 'root#index'
+  get '/reset_password', to: 'root#index'
   match '*path', constraints: { format: 'html' }, to: "root#index", via: [:get]
 end

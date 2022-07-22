@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PasswordResetEmailMailer, type: :mailer do
+RSpec.describe PasswordResetMailer, type: :mailer do
   describe '#pwreset' do
     specify do
       password_reset_email = build(:user)
