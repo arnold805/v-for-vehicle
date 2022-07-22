@@ -20,9 +20,27 @@ class User < ApplicationRecord
     self.password_digest = @password
     end
 
+    def generate_password_reset_token!
+        self.password_reset_token = SecureRandom.uuid
+        self.password_reset_token_expiration = Time.now + 5.minutes
+        save!
+    end
+
+    def password_reset_token_valid?
+        (self.password_reset_token_expiration + 5.minutes) > Time.now
+    end
+
+    def reset_password!(password)
+        self.reset_password_token = nil
+        self.password_reset_token = nil
+        self.password_reset_token_expiration = nil
+        self.password = password
+        save!
+    end
+
     def permitted_emails
         unless email.match?(/gmail.com|yahoo.com|icloud.com/)
             errors.add(:permitted_emails, "That email is not permitted")
         end
-    end 
+    end
 end

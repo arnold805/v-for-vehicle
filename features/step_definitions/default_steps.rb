@@ -38,3 +38,6 @@ end
 Then('I should see recovery email sent') do
     expect(page).to have_content('recovery email sent')
 end
+And('I should recieve the email') do
+    raise 'Implement me'
+end
