@@ -24,3 +24,17 @@ end
 Then('I should see logout button') do
     expect(page).to have_content('LOGOUT')
 end
+
+When('I click on forgot password') do
+    click_on 'Forgot password?'
+end
+Then('I should see password recovery form') do
+    expect(page).to have_content('Password Recovery')
+end
+When('I submit {word} to password reset') do |email|
+    fill_in 'email', :with => email
+    click_on 'Send Password Reset Email'
+end
+Then('I should see recovery email sent') do
+    expect(page).to have_content('recovery email sent')
+end

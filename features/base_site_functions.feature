@@ -1,9 +1,7 @@
 Feature: Plays out the core site features
 
     Background:
-        Given The following user exists in the system:
-            | first name | last name | email | password |
-            | James | May | captslow@gmail.com | backToTheStudio! |
+        Given James May is already registered with captslow@gmail.com and backToTheStudio!
         And I have landed on the site
         When I click on Login button
         Then I should see a Sign in form
