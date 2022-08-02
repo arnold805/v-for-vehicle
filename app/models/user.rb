@@ -24,6 +24,7 @@ class User < ApplicationRecord
         self.password_reset_token = SecureRandom.uuid
         self.password_reset_token_expiration = Time.now + 5.minutes
         save!
+        # user_email = User.find_by_email(user)
         PasswordResetMailer.with(user: self).password_reset_email.deliver_now
     end
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#login'
     delete '/logout', to: 'sessions#logout'
     resources :password_reset, only: [:create]
+    resources :password_new, only: [:update]
 
     resources :users, only: [:create]
     resources :vehicles, only: [:index, :show, :create, :destroy] do 
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
 
   root 'root#index'
   get '/reset_password', to: 'root#index'
+  # get '/new_password', to: 'root#index'
   match '*path', constraints: { format: 'html' }, to: "root#index", via: [:get]
 end

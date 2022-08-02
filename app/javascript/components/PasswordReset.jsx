@@ -42,7 +42,7 @@ function ForgotPassword() {
             <CarRepairIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Password Recovery
+            New Password
           </Typography>
           {/* need to add to handleSubmit */}
           {error ? <Alert severity="info">{error}</Alert> : <></>}
@@ -70,15 +70,8 @@ function ForgotPassword() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Send Password Reset Email
+              Create New Password
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link variant="body2" to="/login" component={RouterLink}>
-                  Suddenly remember password? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
