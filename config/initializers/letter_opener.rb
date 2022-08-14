@@ -1,4 +1,5 @@
-LetterOpener.configure do |config|
+if Rails.env.test? || Rails.env.development?
+  LetterOpener.configure do |config|
     # To overrider the location for message storage.
     # Default value is `tmp/letter_opener`
     config.location = Rails.root.join('tmp', 'my_mails')
@@ -13,3 +14,4 @@ LetterOpener.configure do |config|
     # Default value is blank
     config.file_uri_scheme = 'file://'
   end
+end
