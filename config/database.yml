@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: v_for_vehicle_production
-  username: v_for_vehicle
-  password: <%= ENV["V_FOR_VEHICLE_DATABASE_PASSWORD"] %>
+  database: vdb
+  username: gforce
+  password: n64luigi
