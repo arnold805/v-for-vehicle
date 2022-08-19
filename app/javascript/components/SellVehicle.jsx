@@ -6,11 +6,24 @@ const SellVehicle = () => {
   const httpClient = HttpClient();
   const [newListing, setNewListing] = useState();
   const [formData, setFormData] = useState({
-    type: "",
+    year: "",
     make: "",
     model: "",
     condition: "",
     price: "",
+    odometer: "",
+    engine_type: "",
+    engine_displacement: "",
+    cylinder_count: "",
+    power: "",
+    torque: "",
+    transmission: "",
+    body_style: "",
+    drive_type: "",
+    interior_color: "",
+    exterior_color: "",
+    img_url: "",
+    zipcode: "",
     errors: {},
   });
 
@@ -76,7 +89,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                    <input
+          <input
             type="text"
             name="engine_type"
             placeholder="engine type"
@@ -84,7 +97,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                    <input
+          <input
             type="text"
             name="engine_displacement"
             placeholder="engine displacement"
@@ -98,25 +111,23 @@ const SellVehicle = () => {
             placeholder="cylinder count"
             value={formData.prcylinder_countice}
             onChange={handleChange}
-            // step="1000"
           />
                     <input
             type="number"
             name="power"
-            placeholder="power (in hp)"
+            placeholder="power (hp)"
             value={formData.power}
             onChange={handleChange}
-            // step="1000"
           />
-                    <input
+          <input
             type="number"
             name="torque"
-            placeholder="torque"
+            placeholder="torque (ft-lb)"
             value={formData.torque}
             onChange={handleChange}
             step="1000"
           />
-                    <input
+          <input
             type="text"
             name="transmission"
             placeholder="transmission"
@@ -124,7 +135,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                              <input
+          <input
             type="text"
             name="body_style"
             placeholder="body style"
@@ -132,7 +143,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                              <input
+          <input
             type="text"
             name="drive_type"
             placeholder="drive type"
@@ -140,7 +151,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                              <input
+          <input
             type="text"
             name="interior_color"
             placeholder="interior color"
@@ -148,7 +159,7 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                              <input
+          <input
             type="text"
             name="exterior_color"
             placeholder="exterior color"
@@ -156,13 +167,20 @@ const SellVehicle = () => {
             onChange={handleChange}
             step="1000"
           />
-                                        <input
+          <input
+            type="text"
+            name="img_url"
+            placeholder="image url's"
+            value={formData.img_url}
+            onChange={handleChange}
+            step="1000"
+          />
+          <input
             type="text"
             name="zipcode"
             placeholder="zipcode"
             value={formData.zipcode}
             onChange={handleChange}
-            step="1000"
           />
           <input
             type="submit"

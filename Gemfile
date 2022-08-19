@@ -75,8 +75,6 @@ group :development do
 
   gem "capistrano", "~> 3.17", require: false
 
-  gem 'letter_opener'
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
