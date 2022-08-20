@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { HttpClient } from "../httpClient";
 import VehicleCard from "./VehicleCard";
 import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 
 const VehicleCards = ({ showFavorites }) => {
   const [vehicles, setVehicles] = useState([]);
   const [favorite, setFavorite] = React.useState(false);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
+  const [spacing, setSpacing] = React.useState(2)
   const httpClient = HttpClient();
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const VehicleCards = ({ showFavorites }) => {
   return (
     <>
     <br></br>
+    <Grid container justifyContent="center">
       <TextField
         onChange={handleVehicleSearch}
         autoComplete="given-name"
@@ -42,10 +45,15 @@ const VehicleCards = ({ showFavorites }) => {
         label="Search a Make or Model..."
         autoFocus
       />
+      </Grid>
+      <br></br>
+      <br></br>
       <div>
+        <Grid container justifyContent="center" spacing={2}>
         {filteredVehicles.map((vehicle) => {
           return <VehicleCard key={vehicle.id} vehicle={vehicle} />;
         })}
+        </Grid>
       </div>
     </>
   );

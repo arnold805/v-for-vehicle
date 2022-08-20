@@ -15,6 +15,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
 import { HttpClient } from "../httpClient";
+import Grid from "@mui/material/Grid";
 
 function VehicleCard({ vehicle }) {
   const httpClient = HttpClient();
@@ -80,7 +81,7 @@ function VehicleCard({ vehicle }) {
   return (
     <>
       <h1></h1>
-      <Card sx={{ maxWidth: 345 }} >
+      <Card sx={{ width: 345 }} >
         <CardMedia
           component="img"
           alt="vehicle image"
