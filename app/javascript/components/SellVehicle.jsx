@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { HttpClient } from "../httpClient";
 import VehicleCard from "./VehicleCard";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import SellIcon from '@mui/icons-material/Sell';
 
 const SellVehicle = () => {
   const httpClient = HttpClient();
+
   const [newListing, setNewListing] = useState();
+  const [errors, setErrors] = useState();
   const [formData, setFormData] = useState({
     year: "",
     make: "",
@@ -34,172 +45,243 @@ const SellVehicle = () => {
     });
   }
 
-  function handleSubmit(event) {
-    // checkSellInput(formData);
-    event.preventDefault(event);
-    console.info("Valid Form");
+  function handleSubmit(e) {
+    // debugger;
+    e.preventDefault(e);
+    setErrors();
     httpClient.post("/api/vehicles", formData, setNewListing);
   }
 
   return (
-    <>
-      <div className="form-box">
-        <h2>Sell Vehicle</h2>
-        <form className="sell-car-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="year"
-            placeholder="year"
-            value={formData.year}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="make"
-            placeholder="make"
-            value={formData.make}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="model"
-            placeholder="model"
-            value={formData.model}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="condition"
-            placeholder="new or used"
-            value={formData.condition}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="price"
-            placeholder="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="odometer"
-            placeholder="odometer"
-            value={formData.odometer}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="engine_type"
-            placeholder="engine type"
-            value={formData.engine_type}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="engine_displacement"
-            placeholder="engine displacement"
-            value={formData.engine_displacement}
-            onChange={handleChange}
-            step="1000"
-          />
-                    <input
-            type="text"
-            name="cylinder_count"
-            placeholder="cylinder count"
-            value={formData.prcylinder_countice}
-            onChange={handleChange}
-          />
-                    <input
-            type="number"
-            name="power"
-            placeholder="power (hp)"
-            value={formData.power}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="torque"
-            placeholder="torque (ft-lb)"
-            value={formData.torque}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="transmission"
-            placeholder="transmission"
-            value={formData.transmission}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="body_style"
-            placeholder="body style"
-            value={formData.body_style}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="drive_type"
-            placeholder="drive type"
-            value={formData.drive_type}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="interior_color"
-            placeholder="interior color"
-            value={formData.interior_color}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="exterior_color"
-            placeholder="exterior color"
-            value={formData.exterior_color}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="img_url"
-            placeholder="image url's"
-            value={formData.img_url}
-            onChange={handleChange}
-            step="1000"
-          />
-          <input
-            type="text"
-            name="zipcode"
-            placeholder="zipcode"
-            value={formData.zipcode}
-            onChange={handleChange}
-          />
-          <input
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {/* change color to black, or blue */}
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <SellIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sell Vehicle
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            {errors ? (
+              <Grid item xs={12}>
+                <Alert severity="error">
+                  The following errors prevented you from listing your vehicle!
+                  <ul>
+                    {errors.map((error) => (
+                      <li>{error}</li>
+                    ))}
+                  </ul>
+                </Alert>
+              </Grid>
+            ) : (
+              <></>
+            )}
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                name="year"
+                required
+                fullWidth
+                id="year"
+                label="Year"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                id="make"
+                label="Make"
+                name="make"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                id="model"
+                label="Model"
+                name="model"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="condition"
+                label="Condition"
+                id="condition"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="price"
+                label="Price"
+                id="price"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="odometer"
+                label="Odometer"
+                id="odometer"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="engine_type"
+                label="Engine Type"
+                id="engine_type"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="engine_displacement"
+                label="Engine Displacement"
+                id="engine_displacement"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="cylinder_count"
+                label="Cylinder Count"
+                id="cylinder_count"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="power"
+                label="Power (hp)"
+                id="power"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="torque"
+                label="torque (ft-lb)"
+                id="torque"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="transmission"
+                label="Transmission"
+                id="transmission"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="body_style"
+                label="Body Style"
+                id="body_style"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="drive_type"
+                label="Drive Type"
+                id="drive_type"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="interior_color"
+                label="Interior Color"
+                id="interior_color"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="exterior_color"
+                label="Exterior Color"
+                id="exterior_color"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="img_url"
+                label="Image Url"
+                id="img_url"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                required
+                fullWidth
+                name="zipcode"
+                label="Zipcode"
+                id="zipcode"
+              />
+            </Grid>
+          </Grid>
+          <Button
             type="submit"
-            name="add-car-listing-btn"
-            value="Add Vehicle Listing"
-          />
-        </form>
-      </div>
-      <br />
-      <br />
-      {newListing ? (
-        <>
-          <h2>Here is your new listing:</h2>
-          <VehicleCard vehicle={newListing} />{" "}
-        </>
-      ) : (
-        <></>
-      )}
-    </>
+            fullWidth
+            variant="contained"
+            id="sellvehicleformsubmit"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            List Vehicle
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 
