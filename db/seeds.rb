@@ -101,14 +101,7 @@ Image.create(img_url: "https://images.autotrader.com/hn/c/7387557f2e4649aeb1c8fe
 Image.create(img_url: "https://images.autotrader.com/hn/c/20b35e19a5be4b608ba1e4ead4451142.jpg", vehicle: v9)
 Image.create(img_url: "https://images.autotrader.com/hn/c/a77a01162ee04013a9cae18c262819f1.jpg", vehicle: v9)
 
-Image.create(img_url: "https://images.autotrader.com/hn/c/01295bb0efef41a6884dd5bd18eafa56.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/8fdea9d4ed8d444c9b8cb65abccb8e58.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/c0dfe8e90509451abc24d9cf26d2dbce.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/c63801f03960430cbd72112ab4ba95f6.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/bd329e7ca3904610a1185c8600715375.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/b24f628e66804e02abfb1242e4cbc57a.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/2e263504cff54bf7bf0938c6c519eb1d.jpg", vehicle: v10)
-Image.create(img_url: "https://images.autotrader.com/hn/c/e21ef7c68f284571ac0ba1a0537fed6a.jpg", vehicle: v10)
+Image.create(img_url: "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/210008323/1C6SRFKT1NN166084/3a59dfa5c7a52f20f998b10f51f4c802.jpg", vehicle: v10)
 
 Image.create(img_url: "https://images.autotrader.com/images/2022/7/9/650/100/43714762833.650100010.IM1.03.1024x768_A.1024x768.jpg", vehicle: v11)
 Image.create(img_url: "https://images.autotrader.com/images/2022/7/9/650/100/43714762832.650100010.IM1.02.1024x768_A.1024x768.jpg", vehicle: v11)

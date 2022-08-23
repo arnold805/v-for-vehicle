@@ -9,7 +9,8 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import SellIcon from '@mui/icons-material/Sell';
+import SellIcon from "@mui/icons-material/Sell";
+import Alert from "@mui/material/Alert";
 
 const SellVehicle = () => {
   const httpClient = HttpClient();
@@ -49,7 +50,9 @@ const SellVehicle = () => {
     // debugger;
     e.preventDefault(e);
     setErrors();
-    httpClient.post("/api/vehicles", formData, setNewListing);
+    httpClient.post("/api/vehicles", formData, setNewListing, (err) =>
+      setErrors(err.errors)
+    );
   }
 
   return (
@@ -78,7 +81,7 @@ const SellVehicle = () => {
                   The following errors prevented you from listing your vehicle!
                   <ul>
                     {errors.map((error) => (
-                      <li>{error}</li>
+                      <li key={error}>{error}</li>
                     ))}
                   </ul>
                 </Alert>
