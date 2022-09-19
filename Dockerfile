@@ -2,8 +2,9 @@
 FROM ruby:3.1.2
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 WORKDIR /v-for-vehicle
-COPY Gemfile /v-for-vehicle/Gemfile
-COPY Gemfile.lock /v-for-vehicle/Gemfile.lock
+# COPY Gemfile /v-for-vehicle/Gemfile
+# COPY Gemfile.lock /v-for-vehicle/Gemfile.lock
+COPY ./ /v-for-vehicle
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
