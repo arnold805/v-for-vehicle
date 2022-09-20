@@ -22,6 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch("POSTGRESQL_HOST") { 'Gregs-MBP-2' } %>
   user: <%= ENV.fetch("POSTGRESQL_USER") { 'garnold' } %>
+  password: <%= ENV.fetch("POSTGRESQL_PASSWORD") { nil } %>
   database: <%= ENV.fetch("POSTGRESQL_DATABASE") { Rails.env.test? ? ' v_for_vehicle_test' : 'v_for_vehicle_development' } %>
 
 development:
