@@ -1,0 +1,7 @@
+# this assumes already manually logged into host with Docker login credentials
+
+---
+- hosts: servers
+  become: yes
+  tasks:
+    - name: Tag and push image to docker hub

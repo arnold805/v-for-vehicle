@@ -1,0 +1,28 @@
+# this assumes already manually logged into host with Docker login credentials
+
+---
+- hosts: servers
+  become: yes
+  tasks:
+    - name: pull the latest v-for-vehicle image
+      docker_image:
+        name: arnold805/v-for-vehicle
+        tag: 0.0.6
+        source: pull
+        # repository: arnold805/v-for-vehicle
+    - name: start v-for-vehicle container
+      docker_container:
+        name: v-for-vehicle
+        state: started
+        image: arnold805/v-for-vehicle:0.0.6
+        detach: yes
+        ports:
+          - "3000:3000"
+          # - "5432:5432"
+        env: 
+          POSTGRESQL_HOST: "172.17.0.1"
+          POSTGRESQL_USER: "rails_user"
+          POSTGRESQL_DATABASE: "vdb"
+          POSTGRESQL_PASSWORD: "Gr4R8EU1sSr6lZ646UQugrX8tigpWcWz"
+          RAILS_ENV: "production"
+          RAILS_SERVE_STATIC_FILES: "true"
