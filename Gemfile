@@ -38,6 +38,7 @@ gem "jbuilder"
 
 # reformats logs and redirects to STDOUT
 gem "lograge"
+gem "logstash-event"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

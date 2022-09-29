@@ -1,0 +1,14 @@
+servers:
+  hosts:
+    g-pi:
+      # ansible_host: 192.168.0.13
+      ansible_host: 192.168.147.5
+      ansible_connection: ssh
+      ansible_ssh_user: infra
+initial:
+  hosts:
+    g-pi: 
+      # ansible_host: 192.168.0.13
+      ansible_host: 192.168.147.5
+      ansible_connection: ssh
+      ansible_ssh_user: ubuntu

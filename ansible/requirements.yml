@@ -1,0 +1,11 @@
+---
+# roles:
+  # - name: rvm.ruby
+  # - name: geerlingguy.postgresql
+#  - name: elliotweiser.osx-command-line-tools
+collections:
+#  - name: geerlingguy.mac
+ - name: community.general
+ - name: community.docker
+ - name: community.postgresql
+#  - name: kubernetes.core

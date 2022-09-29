@@ -7,14 +7,14 @@
     - name: pull the latest v-for-vehicle image
       docker_image:
         name: arnold805/v-for-vehicle
-        tag: 0.0.6
+        tag: 0.0.8
         source: pull
         # repository: arnold805/v-for-vehicle
     - name: start v-for-vehicle container
       docker_container:
         name: v-for-vehicle
         state: started
-        image: arnold805/v-for-vehicle:0.0.6
+        image: arnold805/v-for-vehicle:0.0.8
         detach: yes
         ports:
           - "3000:3000"
