@@ -5,7 +5,7 @@ set -e
 rm -f /v-for-vehicle/tmp/pids/server.pid
 
 # Run the migrations
-RAILS_ENV=$RAILS_ENV bundle exec rails db:create db:migrate
+RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"
