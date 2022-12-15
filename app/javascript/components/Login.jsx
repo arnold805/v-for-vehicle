@@ -39,6 +39,41 @@ function Login({ setCurrentUser }) {
     );
   }
 
+  const background_images_array = [
+    "IMG_1266.JPG",
+    "IMG_2353.JPG",
+    "IMG_2489.JPG",
+    "IMG_2560.JPG",
+    "IMG_2628.JPG",
+    "IMG_2664.JPG",
+    "IMG_3004.JPG",
+    "IMG_3058.JPG",
+    "IMG_4337.JPG",
+    "IMG_5010.JPG",
+    "IMG_5068.JPG",
+    "IMG_5086.JPG",
+    "IMG_5098.JPG",
+    "IMG_5281.JPG",
+    "IMG_5863.JPG",
+    "IMG_5972.JPG",
+    "IMG_6202.JPG",
+    "IMG_7133.JPG",
+    "IMG_7170.JPG",
+    "IMG_7325.JPG",
+    "IMG_7361.JPG",
+    "IMG_7362.JPG",
+    "IMG_7366.JPG",
+    "IMG_7373.JPG",
+    "IMG_7388.JPG",
+    "IMG_7401.JPG",
+    "IMG_8067.JPG",
+    "IMG_8197.JPG",
+    "IMG_8325.JPG"
+    ]
+  
+  let pickRandomImage = function () {return background_images_array[Math.floor(Math.random() * background_images_array.length)];}
+
+
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
@@ -48,8 +83,7 @@ function Login({ setCurrentUser }) {
         sm={4}
         md={7}
         sx={{
-          // replace this random shit with something else
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage: `url(/background_images/${pickRandomImage()})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
